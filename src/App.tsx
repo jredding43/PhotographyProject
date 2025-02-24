@@ -8,13 +8,13 @@ const Scheduling = () => <div className="p-10 text-2x1">Scheduling</div>;
 
 function App() {
   return (
-    <Router>
+    <Router basename="/PhotographyProject">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="scheduling" element={<Scheduling />} />
+        <Route path="/scheduling" element={<Scheduling />} />
       </Routes>
     </Router>
   );
