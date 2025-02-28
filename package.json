@@ -5,13 +5,14 @@
   "type": "module",
   "homepage": "https://jredding43.github.io/PhotographyProject",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
+  "dev": "vite",
+  "build": "tsc -b && vite build",
+  "lint": "eslint .",
+  "preview": "vite preview",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist",
+  "start": "node index.mjs"
+},
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
@@ -42,7 +43,7 @@
     "vite": "^6.1.0"
   },
   "description": "This is a photography portfolio website built with React.",
-  "main": "eslint.config.js",
+  "main": "index.mjs",
   "keywords": [],
   "author": "",
   "license": "ISC"
