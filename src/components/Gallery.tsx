@@ -15,15 +15,15 @@ export default function Gallery() {
     const loadImages = async () => {
         setLoading(true);
         setError("");
-        setImages([]); 
+        setImages([]);
 
         try {
             const fetchedImages = await fetchImages(selectedCategory);
-            console.log("Fetched Images in Frontend:", fetchedImages); // Debugging log
+            console.log("Fetched Images in Gallery.tsx:", fetchedImages); // Debugging log
 
             if (fetchedImages.length > 0) {
                 setImages(fetchedImages);
-                setCurrentImage(fetchedImages[0].url); // Set first image as main display
+                setCurrentImage(fetchedImages[0].url); // Set first image
             } else {
                 setError("No images found.");
                 setCurrentImage(null);
@@ -40,6 +40,7 @@ export default function Gallery() {
 
     loadImages();
 }, [selectedCategory]);
+
 
 
   // Handlers for thumbnail navigation
@@ -111,21 +112,25 @@ export default function Gallery() {
               ⇐
             </button>
 
-            {/* Thumbnails */}
+           {/* Thumbnails */}
             <div className="flex space-x-2">
-              {images.slice(startIndex, startIndex + thumbnailsPerPage).map((image) => (
-                <img
-                  key={image.id}
-                  src={image.url}
-                  alt="Thumbnail"
-                  className={`w-20 h-20 object-cover rounded-md cursor-pointer transition-all ${
-                    image.url === currentImage
-                      ? "border-4 border-blue-500"
-                      : "border-2 border-blue-300 hover:border-blue-500"
-                  }`}
-                  onClick={() => setCurrentImage(image.url)}
-                />
-              ))}
+                {images.length > 0 ? (
+                    images.slice(startIndex, startIndex + thumbnailsPerPage).map((image) => (
+                        <img
+                            key={image.id}
+                            src={image.url ? image.url : "https://via.placeholder.com/150"} // Ensure fallback if URL is missing
+                            alt="Thumbnail"
+                            className={`w-20 h-20 object-cover rounded-md cursor-pointer transition-all ${
+                                image.url === currentImage
+                                    ? "border-4 border-blue-500"
+                                    : "border-2 border-blue-300 hover:border-blue-500"
+                            }`}
+                            onClick={() => setCurrentImage(image.url)}
+                        />
+                    ))
+                ) : (
+                    <p className="text-gray-500 text-center">No images available.</p>
+                )}
             </div>
 
             {/* Right Arrow */}
