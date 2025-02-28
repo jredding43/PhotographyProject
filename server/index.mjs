@@ -3,7 +3,7 @@ import cors from "cors";
 import fetch from "node-fetch";
 import dotenv from "dotenv/config";
 
-dotenv.config();
+import "dotenv/config";
 
 const app = express(); 
 app.use(cors());
