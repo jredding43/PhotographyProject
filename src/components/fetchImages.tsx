@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://your-photography-api.onrender.com";
+const API_BASE_URL = "https://your-photography-api.onrender.com:10000";
 
 export const fetchImages = async (category: string) => {
     try {
