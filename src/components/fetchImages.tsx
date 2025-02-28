@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://jredding43.github.io/PhotographyProject/";
+const API_BASE_URL = "https://your-photography-api.onrender.com";
 
 export const fetchImages = async (category: string) => {
     try {
