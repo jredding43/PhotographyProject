@@ -13,32 +13,34 @@ export default function Gallery() {
 
   useEffect(() => {
     const loadImages = async () => {
-      setLoading(true);
-      setError("");
-      setImages([]); // Clear previous images while loading
+        setLoading(true);
+        setError("");
+        setImages([]); 
 
-      try {
-        const fetchedImages = await fetchImages(selectedCategory);
+        try {
+            const fetchedImages = await fetchImages(selectedCategory);
+            console.log("Fetched Images in Frontend:", fetchedImages); // Debugging log
 
-        if (fetchedImages.length > 0) {
-          setImages(fetchedImages);
-          setCurrentImage(fetchedImages[0].url); // Set first image as main display
-        } else {
-          setError("No images found.");
-          setCurrentImage(null);
+            if (fetchedImages.length > 0) {
+                setImages(fetchedImages);
+                setCurrentImage(fetchedImages[0].url); // Set first image as main display
+            } else {
+                setError("No images found.");
+                setCurrentImage(null);
+            }
+        } catch (err) {
+            console.error("Error fetching images:", err);
+            setError("Failed to load images. Please try again.");
+            setImages([]);
+            setCurrentImage(null);
+        } finally {
+            setLoading(false);
         }
-      } catch (err) {
-        console.error("Error fetching images:", err);
-        setError("Failed to load images. Please try again.");
-        setImages([]);
-        setCurrentImage(null);
-      } finally {
-        setLoading(false);
-      }
     };
 
     loadImages();
-  }, [selectedCategory]);
+}, [selectedCategory]);
+
 
   // Handlers for thumbnail navigation
   const handleNextThumbnails = () => {
